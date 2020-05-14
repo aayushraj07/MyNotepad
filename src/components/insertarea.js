@@ -1,36 +1,28 @@
 import React, { Component } from 'react';
+import ShowNotes from './showNotes';
 
 class InsertArea extends Component {
-
     constructor(){
         super();
         this.state={
-            title:"",
-            content:""
-        };
-        
+            title:[],
+            content:[]
+        };   
     }
-
     handleSubmit=(event)=>{
        event.preventDefault()
     }
-
     handleInputChange=(event)=>{
         event.preventDefault();
         this.setState({
-            [event.target.name]: event.target.value
+            [event.target.name]: [event.target.value]
         })
     }
-
-
-        
-
     render(){ 
     return(
         <div className="container-fluid">
             <div className="row mb-2">
                 {/* <div className="col-"></div> */}
-                   
                 <div className="col-5"> 
                 <form onSubmit={this.handleSubmit}>
                     <input placeholder="Your Title" value={this.state.title} type="text" name="title" onChange={this.handleInputChange}>
@@ -56,7 +48,7 @@ class InsertArea extends Component {
             <div className="row">
                 <div className="col-1"></div>
                 <form onSubmit={this.handleSubmit}>
-                <textarea value={this.state.content} onChange={this.handleInputChange} name="content" placeholder="Your notes are safe here!" cols="100" rows="10"></textarea>
+                <textarea value={this.state.content} onChange={this.handleInputChange} name="content" placeholder="Your notes are safe here!" cols="100" rows="5"></textarea>
                 </form>
             </div>
             <br></br>
@@ -66,6 +58,7 @@ class InsertArea extends Component {
                 <button className="btn btn-success">+Add</button>
                 </div>
             </div>
+            <ShowNotes titles={this.state.title}/>            
         </div>
     )
 }
