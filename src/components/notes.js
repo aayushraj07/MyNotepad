@@ -9,23 +9,30 @@ class App extends Component {
     super(props);
     this.state = {
       notes:[
-        {title:'',content:''},
-    ]
+        {title:"First Note",content:"This one is for trial"}
+    ],
+    count: 0
     }
     this.handleInputValue = this.handleInputValue.bind(this);
   }
  
   //Callback function which is also adding data from child component
   handleInputValue(val) {
-    this.setState({ ...val });
-    console.log(val)
+    this.setState(state=>{
+      const notes = state.notes.concat(val);
+      return{
+        notes
+      }
+    })
+    this.setState({ count: this.state.count+1});
+    console.log(this.state)
   }
  
   render() {
     return (
       <div className="container-fluid">
         <Editor handleInput={this.handleInputValue} />
-        <Item dataToShow={this.notes} />
+        <Item dataToShow={this.notes[this.state.count]} />
       </div>
     );
   }

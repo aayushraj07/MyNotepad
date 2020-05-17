@@ -4,8 +4,7 @@ class Editor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      content:''
+      title: '',content:''
     }
     this.onInputChangeTitle = this.onInputChangeTitle.bind(this);
     this.onInputChangeContent = this.onInputChangeContent.bind(this);
