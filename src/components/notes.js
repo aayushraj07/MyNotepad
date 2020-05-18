@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import '../App.css';
 import Editor from './editor';
-// import NoteList from './notelist';
+import NoteList from './noteslist';
 
 class App extends Component {
     state = {
