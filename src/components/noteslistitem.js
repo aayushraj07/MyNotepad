@@ -1,10 +1,8 @@
-import React  from 'react';
+import React from "react";
 
-const NoteListItems = (props)=>{
-    return(
-    <ul>
-        </ul>
-    )
-}
+const NoteListItems = ({ data }) => {
+  console.log(data);
+  return <div>{NoteListItems}</div>;
+};
 
-export default  NoteListItems;
+export default NoteListItems;
