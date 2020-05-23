@@ -1,19 +1,13 @@
 import React from "react";
 import NoteListItems from "./noteslistitem";
+import "./css/noteslist.css";
 
 const NotesList = (props) => {
-  const items = Object.entries(props.dataToShow);
-  const NoteItems = items.map((data) => {
-    return <NoteListItems key={props.count} data={data} />;
+  console.log(props);
+  const NoteItems = props.dataToShow.map((data) => {
+    return <NoteListItems data={data} />;
   });
   return <div>{NoteItems}</div>;
 };
 
 export default NotesList;
-
-// if (props.dataToShow instanceof Array) {
-//     console.log("all good");
-//     debugger;
-//   } else {
-//     console.log("nope");
-//   }

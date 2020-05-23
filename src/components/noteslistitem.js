@@ -1,8 +1,8 @@
 import React from "react";
 
-const NoteListItems = ({ data }) => {
-  console.log(data);
-  return <div>{NoteListItems}</div>;
+const NoteListItems = ({ props }) => {
+  console.log(props);
+  return <li className="list-group">{props}</li>;
 };
 
 export default NoteListItems;

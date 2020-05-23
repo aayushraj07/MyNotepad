@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../App.css";
 import Editor from "./editor";
 import NotesList from "./noteslist";
 
@@ -21,18 +20,19 @@ class App extends Component {
       () => console.log(this.state)
     );
     this.setState({ count: this.state.count + 1 });
-    console.log(this.state);
     // debugger;
   };
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div className="row">
-          <Editor handleInput={this.handleInputValue} />
-        </div>
-        <div className="row">
-          <NotesList dataToShow={this.state.notes[this.state.count]} />
+          <div className="col-3">
+            <NotesList dataToShow={this.state.notes} />
+          </div>
+          <div className="col-9">
+            <Editor handleInput={this.handleInputValue} />
+          </div>
         </div>
       </div>
     );
