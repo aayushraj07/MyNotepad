@@ -1,8 +1,11 @@
 import React from "react";
 
 const NoteListItems = ({ props }) => {
-  console.log(props);
-  return <li className="list-group">{props}</li>;
+  return (
+    <div>
+      <li className="list-group">{props}</li>
+    </div>
+  );
 };
 
 export default NoteListItems;

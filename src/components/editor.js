@@ -18,8 +18,8 @@ class Editor extends Component {
 
   render() {
     return (
-      <div className="conatiner">
-        <div className="row">
+      <div className="conatiner mt-4">
+        <div className="row mb-1">
           <input
             placeholder="Your Title"
             value={this.state.title}
@@ -40,7 +40,7 @@ class Editor extends Component {
           <button
             disabled={!this.state.content || !this.state.title}
             onClick={() => this.props.handleInput(this.state)}
-            className="btn btn-success"
+            className="btn btn-outline-dark mt-1"
           >
             +Add
           </button>
