@@ -1,10 +1,12 @@
 import React from "react";
 
-const NoteListItems = ({ props }) => {
-  console.log(props);
+const NoteListItems = ({ data }) => {
+  // const data = props.data;
+  console.log(data);
   return (
     <div>
-      <li className="list-group">{props}</li>
+      {data.title}
+      {data.content}
     </div>
   );
 };

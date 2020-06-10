@@ -1,12 +1,22 @@
 import React, { Component } from "react";
 import Editor from "./editor";
 import NotesList from "./noteslist";
+// import Axios from "axios";
+import axios from "axios";
 // import "./css/noteslist.css";
 
 class App extends Component {
   state = {
-    notes: [{ title: "First Note", content: "This one is for trial" }],
+    notes: [{ title: "", content: "" }],
   };
+
+  //using Axios
+  componentDidMount() {
+    axios.get(`/notes`).then((res) => {
+      this.setState(res.data);
+      console.log(this.state);
+    });
+  }
 
   //Callback function which is also adding data from child component
   handleInputValue = (val) => {
