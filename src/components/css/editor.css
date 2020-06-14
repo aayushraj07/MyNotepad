@@ -1,8 +1,10 @@
-body{
+body {
     background-color: bisque;
-    
+    width: 100%;
+    position: relative;
 }
-.editor{
+
+/* .editor {
     background-color: antiquewhite;
     margin: auto;
-}
+} */
