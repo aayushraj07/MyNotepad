@@ -7,29 +7,27 @@ import "./css/noteslist.css";
 
 class App extends Component {
   state = {
-    notes: [{ title: "", content: "" }],
+    notes: [{ title: "", content: "", id: "" }],
+    // newNotes: [{ title: "", content: "", id: "" }],
   };
 
   //using Axios
   componentDidMount() {
     axios.get(`notes`).then((res) => {
+      // this.setState((state) => {
+      //   const newNotes = state.newNotes.concat(res.data);
+      //   return {
+      //     newNotes,
+      //   };
+      // });
       this.setState(res.data);
       console.log(this.state);
     });
   }
 
-  // componentDidMount(){
-  //   axios.post(`add_notes` , {
-  //     headers:{
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },body: JSON.stringify(val),
-  //   })
-  //   .then((respnse) => respnse.json())
-  //   .then((data) => {
-  //     console.log("Success", data)
-  //   });
-  // }
+  // getId = () => {
+  //   Axios.get(`notes`).then((res) => {});
+  // };
 
   backendLoad = (val) => {
     fetch("/add_note", {
@@ -46,6 +44,18 @@ class App extends Component {
       });
   };
 
+  deleteNote = (event) => {
+    // axios.post(`/delete/`).then(
+    //   (Response) => {
+    //     console.log(Response);
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // );
+    console.log("Deleting");
+  };
+
   //Callback function which is also adding data from child component
   handleInputValue = (val) => {
     this.setState(
@@ -57,8 +67,12 @@ class App extends Component {
       },
       () => console.log(this.state)
     );
+    // this.getBackend();
     this.backendLoad(val);
+
+    // this.getNote();
   };
+
   render() {
     return (
       <div className="container">
@@ -71,10 +85,12 @@ class App extends Component {
           {/* <div className="sidenav"> */}
           <h5>Your Notes</h5>
         </div>
-
         <div className="row">
           <div className="col-4"></div>
-          <NotesList dataToShow={this.state.notes} />
+          <NotesList
+            dataToShow={this.state.notes}
+            forDelete={this.deleteNote}
+          />
         </div>
       </div>
     );

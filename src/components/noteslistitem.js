@@ -1,10 +1,13 @@
 import React from "react";
 
-const NoteListItems = ({ data }) => {
+const NoteListItems = (props) => {
   // const data = props.data;
   return (
     <div>
-      Title:{data.title}, Content:{data.content}
+      Title:{props.data.title}, Content:{props.data.content}
+      <button onClick={() => props.deletefun()} className="btn btn-danger">
+        Delete
+      </button>
     </div>
   );
 };
