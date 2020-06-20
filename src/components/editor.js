@@ -39,7 +39,7 @@ class Editor extends Component {
           ></textarea>
           <button
             disabled={!this.state.content || !this.state.title}
-            onClick={() => this.props.handleInput(this.state)}
+            onClick={() => this.props.saveNote(this.state)}
             className="btn btn-outline-dark mt-1"
           >
             +Add

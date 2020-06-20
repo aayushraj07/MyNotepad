@@ -6,16 +6,19 @@ import axios from "axios";
 import "./css/noteslist.css";
 
 // service Imports
-import { fetchAllNotes } from "../services/services";
+import { fetchAllNotes, saveNote } from "../services/services";
 
 class Notes extends Component {
   state = {
     notes: [],
-    // newNotes: [{ title: "", content: "", id: "" }],
   };
 
   //using Axios
   componentDidMount() {
+    this._fetchNotes();
+  }
+
+  _fetchNotes = () => {
     fetchAllNotes()
       .then((res) => {
         this.setState({
@@ -23,74 +26,24 @@ class Notes extends Component {
         });
       })
       .catch(() => {});
-    // axios.get(`notes`).then((res) => {
-    //   // this.setState((state) => {
-    //   //   const newNotes = state.newNotes.concat(res.data);
-    //   //   return {
-    //   //     newNotes,
-    //   //   };
-    //   // });
-    //   this.setState(res.data);
-    //   console.log(this.state.notes);
-    // });
-  }
-
-  // getId = () => {
-  //   Axios.get(`notes`).then((res) => {});
-  // };
-
-  saveNote = (val) => {
-    fetch("/add_note", {
-      method: "POST",
-      // mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(val),
-    });
-    // .then((respnse) => respnse.json())
-    // .then((data) => {
-    //   console.log("Success", data);
-    // });Query
-    console.log("Worked! Posted");
   };
 
-  deleteNote = (event) => {
-    // axios.post(`/delete/`).then(
-    //   (Response) => {
-    //     console.log(Response);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
-    console.log("Deleting");
+  _saveNote = (note) => {
+    console.log(note);
+    saveNote(note)
+      .then((res) => {
+        this._fetchNotes();
+        console.log(res);
+      })
+      .catch(() => {});
   };
-
-  //Callback function which is also adding data from child component
-  // handleInputValue = (val) => {
-  //   this.setState(
-  //     (state) => {
-  //       const notes = state.notes.concat(val);
-  //       return {
-  //         notes,
-  //       };
-  //     },
-  //     () => console.log(this.state)
-  //   );
-  //   // this.getBackend();
-  //   this.saveNote(val);
-
-  //   // this.getNote();
-  // };
 
   render() {
     return (
       <div className="container">
         <div className="row">
           <div className="col-10">
-            <Editor className="editor" handleInput={this.handleInputValue} />
+            <Editor className="editor" saveNote={this._saveNote} />
           </div>
         </div>
         <div className="row">

@@ -13,12 +13,22 @@ export const fetchAllNotes = () =>
       });
   });
 
-// export const saveAllNotes = () => {
-//   new Promise((resolve, reject) => {
-//     axios({
-//       method: "post",
-//       url: "add_note",
-//       data: {},
-//     });
-//   });
-// };
+export const saveNote = (newNote) =>
+  new Promise((resolve, reject) => {
+    axios({
+      method: "post",
+      url: "add_note",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      data: newNote,
+    })
+      .then((res) => {
+        console.log(res);
+        resolve(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
