@@ -4,7 +4,7 @@ import Notes from "./components/notes";
 
 function App() {
   return (
-    <div className="App ">
+    <div className="App">
       <Notes />
     </div>
   );

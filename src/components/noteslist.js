@@ -6,7 +6,12 @@ const NotesList = (props) => {
     // console.log(data.id);
     // console.log(data.content);
     return (
-      <NoteListItems key={data.id} data={data} deletefun={props.forDelete} />
+      <NoteListItems
+        key={data.id}
+        data={data}
+        deletefun={props.deleteNote}
+        updatefun={props.updateNote}
+      />
     );
   });
 

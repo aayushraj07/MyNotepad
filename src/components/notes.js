@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import Editor from "./editor";
 import NotesList from "./noteslist";
-// import Axios from "axios";
-import axios from "axios";
-import "./css/noteslist.css";
 
 // service Imports
-import { fetchAllNotes, saveNote } from "../services/services";
+import {
+  fetchAllNotes,
+  saveNote,
+  deleteNote,
+  updateNote,
+} from "../services/services";
 
 class Notes extends Component {
   state = {
@@ -29,11 +31,25 @@ class Notes extends Component {
   };
 
   _saveNote = (note) => {
-    console.log(note);
     saveNote(note)
-      .then((res) => {
+      .then(() => {
         this._fetchNotes();
-        console.log(res);
+      })
+      .catch(() => {});
+  };
+
+  _deleteNote = (id) => {
+    deleteNote(id)
+      .then(() => {
+        this._fetchNotes();
+      })
+      .catch(() => {});
+  };
+
+  _updateNote = (id) => {
+    updateNote(id)
+      .then(() => {
+        this._saveNote(id);
       })
       .catch(() => {});
   };
@@ -52,7 +68,11 @@ class Notes extends Component {
         </div>
         <div className="row">
           <div className="col-4"></div>
-          <NotesList notes={this.state.notes} forDelete={this.deleteNote} />
+          <NotesList
+            notes={this.state.notes}
+            deleteNote={this._deleteNote}
+            updateNote={this._updateNote}
+          />
         </div>
       </div>
     );
