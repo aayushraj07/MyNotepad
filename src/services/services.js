@@ -29,6 +29,7 @@ export const saveNote = (newNote) =>
       })
       .catch((err) => {
         console.log(err);
+        reject(err);
       });
   });
 
@@ -44,32 +45,12 @@ export const deleteNote = (id) =>
         reject(err);
       });
   });
-// export const updateNote = (id, newNote) =>
-//   new Promise((resolve, reject) => {
-//     axios({
-//       method: "put",
-//       url: `add_note${id}`,
-//       headers: {
-//         "Content-Type": "application/json",
-//         Accept: "application/json",
-//       },
-//       data: newNote,
-//     })
-//       .then((res) => {
-//         console.log(res);
-//         resolve(res);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//         reject(err);
-//       });
-//   });
 
 export const updateNote = (id, newNote) =>
   new Promise((resolve, reject) => {
     axios({
-      method: "post",
-      url: `add_note${id}`,
+      method: "put",
+      url: `add_note/${id}`,
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -77,9 +58,10 @@ export const updateNote = (id, newNote) =>
       data: newNote,
     })
       .then((res) => {
-        resolve(res.data);
+        resolve(res);
       })
       .catch((err) => {
+        console.log(err);
         reject(err);
       });
   });

@@ -13,6 +13,7 @@ import {
 class Notes extends Component {
   state = {
     notes: [],
+    isEdit: false,
   };
 
   //using Axios
@@ -46,12 +47,17 @@ class Notes extends Component {
       .catch(() => {});
   };
 
-  _updateNote = (id) => {
-    updateNote(id)
-      .then(() => {
-        this._saveNote(id);
+  _updateNote = (id, note) => {
+    // console.log(id);
+    this.setState({
+      isEdit: true,
+    });
+    updateNote(id, note)
+      .then((res) => {
+        this._fetchNotes(res);
       })
       .catch(() => {});
+    this.setState({ isEdit: false });
   };
 
   render() {
@@ -59,7 +65,12 @@ class Notes extends Component {
       <div className="container">
         <div className="row">
           <div className="col-10">
-            <Editor className="editor" saveNote={this._saveNote} />
+            <Editor
+              className="editor"
+              saveNote={this._saveNote}
+              updateNote={this._updateNote}
+              editSwitch={this.state.isEdit}
+            />
           </div>
         </div>
         <div className="row">
