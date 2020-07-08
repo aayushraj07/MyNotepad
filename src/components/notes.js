@@ -56,23 +56,24 @@ class Notes extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-10">
-            <Editor className="editor" saveNote={this._saveNote} />
+      <div className="container-fluid">
+        <div className="row topbar">
+          <div className="col-lg-12">
+            <h1>Notegram</h1>
           </div>
         </div>
         <div className="row">
-          {/* <div className="sidenav"> */}
-          <h5>Your Notes</h5>
-        </div>
-        <div className="row">
-          <div className="col-4"></div>
-          <NotesList
-            notes={this.state.notes}
-            deleteNote={this._deleteNote}
-            updateNote={this._updateNote}
-          />
+          <div className="col-md-4 notelist">
+            <h5>Note List</h5>
+            <NotesList
+              notes={this.state.notes}
+              deleteNote={this._deleteNote}
+              updateNote={this._updateNote}
+            />
+          </div>
+          <div className="col-md-6">
+            <Editor className="editor" saveNote={this._saveNote} />
+          </div>
         </div>
       </div>
     );

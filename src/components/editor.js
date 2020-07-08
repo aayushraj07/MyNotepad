@@ -17,7 +17,7 @@ class Editor extends Component {
 
   render() {
     return (
-      <div className="conatiner mt-4">
+      <div className="conatiner mt-4 editor">
         <div className="row mb-1">
           <input
             placeholder="Your Title"
@@ -34,7 +34,7 @@ class Editor extends Component {
             name="content"
             placeholder="Your notes are safe here!"
             cols="100"
-            rows="5"
+            rows="8"
           ></textarea>
           <button
             disabled={!this.state.content || !this.state.title}

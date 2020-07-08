@@ -3,8 +3,12 @@ import React from "react";
 const NoteListItems = (props) => {
   // const data = props.data;
   return (
-    <div>
-      Title:{props.data.title}, Content:{props.data.content}
+    <div className="container items">
+      <div className="row">
+        <b>Title:</b>
+        {props.data.title} <b>Content:</b>
+        {props.data.content}
+      </div>
       <button
         onClick={() => props.deletefun(props.data.id)}
         className="btn btn-danger"
