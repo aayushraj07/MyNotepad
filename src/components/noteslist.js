@@ -1,5 +1,6 @@
 import React from "react";
 import NoteListItems from "./noteslistitem";
+import "css/drag.css";
 
 const NotesList = (props) => {
   const NoteItems = props.notes.map((data) => {
@@ -16,8 +17,10 @@ const NotesList = (props) => {
   });
 
   return (
-    <div>
-      <ul>{NoteItems}</ul>
+    <div class="empty">
+      <div className="fill" draggable="true">
+        <ul>{NoteItems}</ul>
+      </div>
     </div>
   );
 };
